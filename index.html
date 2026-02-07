@@ -79,7 +79,7 @@ button {
 
 /* YES/NO page background ONLY */
 #valentine-page {
-  background: url('images/bg.jpg') no-repeat center top;
+  background: url('bg.jpg') no-repeat center top;
   background-size: 100% auto;
   color: white;
   flex-direction: column;
@@ -131,7 +131,7 @@ button {
 </head>
 
 <body>
-<audio id="bgMusic" src="images/song.mp3"></audio>
+<audio id="bgMusic" src="song.mp3"></audio>
 
 <!-- Slide 1 -->
 <div class="slide active" id="first-slide">
@@ -156,8 +156,8 @@ button {
 <div class="slide">
   <div class="photo-text-top">My favourite memories ❤️</div>
   <div class="photo-row">
-    <img src="images/pic1.jpg" alt="Pic 1">
-    <img src="images/pic2.jpg" alt="Pic 2">
+    <img src="pic1.jpg" alt="Pic 1">
+    <img src="pic2.jpg" alt="Pic 2">
   </div>
   <div class="photo-text-bottom">I’m finally asking you… ❤️</div>
 </div>
@@ -180,7 +180,7 @@ button {
 <!-- Slide 10 (Final) -->
 <div class="slide" id="final-slide">
   <h1>Finally us ❤️</h1>
-  <img src="images/final.jpg" class="final-photo" alt="Finally Us">
+  <img src="final.jpg" class="final-photo" alt="Finally Us">
 </div>
 
 <script>
@@ -212,11 +212,10 @@ const msg = document.getElementById("msg");
 const texts = ["Wrong button…","Sweety please press YES","NidhuVedu… you’re breaking my heart"];
 let t = 0;
 
-noBtn.addEventListener("mouseover", ()=>{
-  // move freely around screen
+noBtn.addEventListener("mouseover", ()=> {
   noBtn.style.position = "absolute";
-  const x = Math.random() * 70; // max 70%
-  const y = Math.random() * 70; // max 70%
+  const x = Math.random() * 70; 
+  const y = Math.random() * 70;
   noBtn.style.left = x + "%";
   noBtn.style.top = y + "%";
   msg.textContent = texts[t % texts.length];
@@ -224,12 +223,12 @@ noBtn.addEventListener("mouseover", ()=>{
 });
 
 // YES button
-document.getElementById("yes").onclick = ()=>{
+document.getElementById("yes").onclick = ()=> {
   slides[index].classList.remove("active");
   const yesSlide = document.getElementById("yes-slide");
   yesSlide.classList.add("active");
 
-  // Create sparkles
+  // Sparkles
   for(let i=0;i<20;i++){
     const sparkle = document.createElement("div");
     sparkle.className = "sparkle";
