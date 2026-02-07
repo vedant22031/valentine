@@ -1,215 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>For Nidhu ❤️</title>
+  <meta charset="UTF-8">
+  <title>For Nidhu ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Brush Script MT', cursive, 'Segoe UI', sans-serif;
+      cursor: pointer;
+      background: white;
+      color: black;
+      overflow: hidden;
+    }
 
-<style>
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Brush Script MT', cursive, 'Segoe UI', sans-serif;
-  cursor: pointer;
-  overflow: hidden;
-  background: white;
-  color: black;
-}
+    /* Fullscreen slides */
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 25px;
+      box-sizing: border-box;
+      background: white;
+    }
 
-/* Fullscreen slides */
-.slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 25px;
-  box-sizing: border-box;
-  background: white;
-}
+    .slide.active {
+      display: flex;
+      animation: fadeIn 1s ease forwards;
+    }
 
-.slide.active {
-  display: flex;
-  animation: fadeIn 1s ease forwards;
-}
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
 
-@keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
+    /* Text */
+    h1 { font-size: 36px; margin-bottom: 15px; }
+    p { font-size: 22px; }
 
-/* Text */
-h1 { font-size: 36px; margin-bottom: 15px; }
-p { font-size: 22px; }
+    /* Photos */
+    .photo-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .photo-row img {
+      width: 48%;
+      max-width: 300px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 15px;
+    }
 
-/* Photos */
-.photo-row { display: flex; gap: 12px; margin-top: 20px; }
-.photo-row img { width: 48%; height: 220px; object-fit: cover; border-radius: 15px; }
+    .photo-text-top, .photo-text-bottom {
+      font-size: 22px; font-weight: bold; color: #333; opacity: 0; animation: fadeText 1s forwards;
+    }
+    .photo-text-top { margin-bottom: 12px; animation-delay: 0.3s; }
+    .photo-text-bottom { margin-top: 15px; animation-delay: 1s; }
 
-.photo-text-top,
-.photo-text-bottom {
-  font-size: 22px; font-weight: bold; color: #333; opacity: 0; animation: fadeText 1s forwards;
-}
-.photo-text-top { margin-bottom: 12px; animation-delay: 0.3s; }
-.photo-text-bottom { margin-top: 15px; animation-delay: 1s; }
+    @keyframes fadeText { to { opacity: 1; } }
 
-@keyframes fadeText { to { opacity: 1; } }
+    /* Final photo */
+    .final-photo { width: 90%; max-width: 500px; border-radius: 15px; object-fit: cover; }
 
-/* Final photo */
-.final-photo { width: 90%; max-width: 500px; border-radius: 15px; object-fit: cover; }
+    /* Buttons */
+    .btns { display: flex; gap: 20px; margin-top: 20px; justify-content: center; }
+    button {
+      padding: 12px 22px;
+      font-size: 18px;
+      border-radius: 25px;
+      border: 2px solid black;
+      cursor: pointer;
+      background: white;
+      color: black;
+      position: relative;
+    }
 
-/* Buttons */
-.btns { display: flex; gap: 20px; margin-top: 20px; justify-content: center; }
-button {
-  padding: 12px 22px;
-  font-size: 18px;
-  border-radius: 25px;
-  border: 2px solid black;
-  cursor: pointer;
-  background: white;
-  color: black;
-  position: relative;
-}
+    .small-text { margin-top: 15px; font-size: 16px; height: 20px; color: #ffeb3b; }
 
-.small-text { margin-top: 15px; font-size: 16px; height: 20px; color: #ffeb3b; }
+    /* YES/NO page */
+    #valentine-page {
+      background: url('bg.jpg') no-repeat center top;
+      background-size: cover;
+      color: white;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    #valentine-page h1 { margin-bottom: 15px; }
+    #valentine-page button { border: 2px solid white; background: rgba(255,255,255,0.8); color: black; }
 
-/* YES/NO page */
-#valentine-page {
-  background: url('bg.jpg') no-repeat center top;
-  background-size: cover;
-  color: white;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-#valentine-page h1 { margin-bottom: 15px; }
-#valentine-page button { border: 2px solid white; background: rgba(255,255,255,0.8); color: black; }
+    /* Click to start */
+    .click-start { font-size: 24px; margin-top: 25px; color: #555; }
 
-/* Click to start */
-.click-start { font-size: 24px; margin-top: 25px; color: #555; }
-
-/* YES slide */
-#yes-slide {
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-}
-#yes-slide h1 {
-  font-size: 48px; color: #fff;
-  text-shadow: 2px 2px 15px rgba(0,0,0,0.3);
-  animation: scaleFade 1s ease forwards;
-}
-@keyframes scaleFade {
-  0% { transform: scale(0.5); opacity: 0; }
-  50% { transform: scale(1.1); opacity: 1; }
-  100% { transform: scale(1); opacity: 1; }
-}
-</style>
+    /* YES slide */
+    #yes-slide {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #yes-slide h1 {
+      font-size: 48px; color: #fff;
+      text-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+      animation: scaleFade 1s ease forwards;
+    }
+    @keyframes scaleFade {
+      0% { transform: scale(0.5); opacity: 0; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
 </head>
-
 <body>
-<audio id="bgMusic" src="song.mp3"></audio>
 
-<!-- Slides -->
-<div class="slide active" id="first-slide">
-  <h1>Hey Nidhu ❤️</h1>
-  <p>Click anywhere to start</p>
-  <div class="click-start">🎵 Music will play 🎵</div>
-</div>
+  <audio id="bgMusic" src="song.mp3"></audio>
 
-<div class="slide">
-  <h1>It’s Valentine 💖</h1>
-  <p>Will you be my Valentine?</p>
-</div>
-
-<div class="slide"><p>That’s what I was going to do.</p></div>
-<div class="slide"><p>But then I stopped.</p></div>
-<div class="slide"><p>I realised, I wanted to do something special.</p></div>
-<div class="slide"><h1>You are special 💖</h1></div>
-
-<div class="slide">
-  <div class="photo-text-top">My favourite memories ❤️</div>
-  <div class="photo-row">
-    <img src="pic1.jpg" alt="Pic 1">
-    <img src="pic2.jpg" alt="Pic 2">
+  <!-- Slides -->
+  <div class="slide active" id="first-slide">
+    <h1>Hey Nidhu ❤️</h1>
+    <p>Click anywhere to start</p>
+    <div class="click-start">🎵 Music will play 🎵</div>
   </div>
-  <div class="photo-text-bottom">I’m finally asking you… ❤️</div>
-</div>
 
-<div class="slide" id="valentine-page">
-  <h1>Will you be my Valentine ❤️</h1>
-  <div class="btns">
-    <button id="yes">YES ❤️</button>
-    <button id="no">NO 😢</button>
+  <div class="slide">
+    <h1>It’s Valentine 💖</h1>
+    <p>Will you be my Valentine?</p>
   </div>
-  <div class="small-text" id="msg"></div>
-</div>
 
-<div class="slide" id="yes-slide">
-  <h1>She said YESSS 💖🥰🎉</h1>
-</div>
+  <div class="slide"><p>That’s what I was going to do.</p></div>
+  <div class="slide"><p>But then I stopped.</p></div>
+  <div class="slide"><p>I realised, I wanted to do something special.</p></div>
+  <div class="slide"><h1>You are special 💖</h1></div>
 
-<div class="slide" id="final-slide">
-  <h1>Finally us ❤️</h1>
-  <img src="final.jpg" class="final-photo" alt="Finally Us">
-</div>
+  <div class="slide">
+    <div class="photo-text-top">My favourite memories ❤️</div>
+    <div class="photo-row">
+      <img src="pic1.jpg" alt="Pic 1">
+      <img src="pic2.jpg" alt="Pic 2">
+    </div>
+    <div class="photo-text-bottom">I’m finally asking you… ❤️</div>
+  </div>
+
+  <div class="slide" id="valentine-page">
+    <h1>Will you be my Valentine ❤️</h1>
+    <div class="btns">
+      <button id="yes">YES ❤️</button>
+      <button id="no">NO 😢</button>
+    </div>
+    <div class="small-text" id="msg"></div>
+  </div>
+
+  <div class="slide" id="yes-slide">
+    <h1>She said YESSS 💖🥰🎉</h1>
+  </div>
+
+  <div class="slide" id="final-slide">
+    <h1>Finally us ❤️</h1>
+    <img src="final.jpg" class="final-photo" alt="Finally Us">
+  </div>
 
 <script>
-const slides = document.querySelectorAll(".slide");
-let index = 0;
-const music = document.getElementById("bgMusic");
+  const slides = document.querySelectorAll(".slide");
+  let index = 0;
+  const music = document.getElementById("bgMusic");
 
-// Start slides on click
-document.getElementById("first-slide").addEventListener("click", ()=>{
-  music.play().catch(()=>{console.log("Click required to play music");});
-  setTimeout(()=>{music.pause();},30000);
+  // Start slides on first click
+  document.getElementById("first-slide").addEventListener("click", ()=> {
+    music.play().catch(()=>{ console.log("Click required to play music"); });
 
-  slides[index].classList.remove("active");
-  index++;
-  slides[index].classList.add("active");
+    slides[index].classList.remove("active");
+    index++;
+    slides[index].classList.add("active");
 
-  const auto = setInterval(()=>{
-    if(index<7){
-      slides[index].classList.remove("active");
-      index++;
-      slides[index].classList.add("active");
-    } else clearInterval(auto);
-  },5000);
-});
+    // Auto advance slides every 5s (up to photo page)
+    const auto = setInterval(()=>{
+      if(index < slides.length - 3){ // stop before YES/NO page
+        slides[index].classList.remove("active");
+        index++;
+        slides[index].classList.add("active");
+      } else clearInterval(auto);
+    }, 5000);
+  });
 
-// NO button teasing
-const noBtn = document.getElementById("no");
-const msg = document.getElementById("msg");
-const texts = ["Wrong button…","Sweety please press YES","NidhuVedu… you’re breaking my heart"];
-let t = 0;
+  // NO button teasing
+  const noBtn = document.getElementById("no");
+  const msg = document.getElementById("msg");
+  const texts = ["Wrong button…","Sweety please press YES","NidhuVedu… you’re breaking my heart"];
+  let t = 0;
+  noBtn.addEventListener("mouseover", ()=>{
+    noBtn.style.position = "absolute";
+    const x = Math.random() * 70;
+    const y = Math.random() * 70;
+    noBtn.style.left = x + "%";
+    noBtn.style.top = y + "%";
+    msg.textContent = texts[t % texts.length];
+    t++;
+  });
 
-noBtn.addEventListener("mouseover", ()=>{
-  noBtn.style.position = "absolute";
-  const x = Math.random() * 70;
-  const y = Math.random() * 70;
-  noBtn.style.left = x + "%";
-  noBtn.style.top = y + "%";
-  msg.textContent = texts[t % texts.length];
-  t++;
-});
+  // YES button
+  document.getElementById("yes").onclick = ()=>{
+    slides[index].classList.remove("active");
+    const yesSlide = document.getElementById("yes-slide");
+    yesSlide.classList.add("active");
 
-// YES button
-document.getElementById("yes").onclick = ()=>{
-  slides[index].classList.remove("active");
-  const yesSlide = document.getElementById("yes-slide");
-  yesSlide.classList.add("active");
-
-  setTimeout(()=>{
-    yesSlide.classList.remove("active");
-    document.getElementById("final-slide").classList.add("active");
-  },3000);
-};
+    setTimeout(()=>{
+      yesSlide.classList.remove("active");
+      document.getElementById("final-slide").classList.add("active");
+    },3000);
+  };
 </script>
+
 </body>
 </html>
